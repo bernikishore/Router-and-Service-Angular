@@ -1,0 +1,10 @@
+img {
+    max-width: 100%;
+    border: none;
+}
+
+.mdl-navigation__link {
+    padding: 0 20px;
+    line-height: 64px;
+    color: #fff;
+}

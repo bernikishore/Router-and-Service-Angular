@@ -1,0 +1,136 @@
+<table class="mdl-data-table">
+    <tr>
+        <td colspan="2" class="mdl-data-table__cell--non-numeric">Hello <strong>{{title}}</strong> test</td>
+    </tr>
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric"><strong>Name:</strong></td>
+        <td class="mdl-data-table__cell--non-numeric">{{name}}</td>
+    </tr>
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric"><strong>Email:</strong></td>
+        <td class="mdl-data-table__cell--non-numeric">{{email}}</td>
+    </tr>
+    <tr>
+        <td class="mdl-data-table__cell--non-numeric"><strong>Address:</strong></td>
+        <td class="mdl-data-table__cell--non-numeric">{{address.street}} {{address.city}}, {{address.state}}</td>
+    </tr>
+</table>
+<hr>
+<button (click)="toggleHobbies()" md-raised-button color="accent">
+              {{showHobbies ? "Hide Hobbies" : "Show Hobbies"}}
+            </button>
+<div *ngIf="showHobbies">
+    <h3>Hobbies</h3>
+    <ul>
+        <li *ngFor="let hobby of hobbies; let i of index">{{hobby}} <button (click)="deleteHobby()">X</button></li>
+    </ul>
+    <form (submit)="addHobby(hobby.value)">
+        <label>Enter you Hobby</label>
+        <input type="text" #hobby />
+    </form>
+</div>
+
+<md-toolbar color="primary">
+    <span>GameViewer</span>
+    <span class="spacer"></span>
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu #menu="mdMenu">
+        <button md-menu-item>
+        <md-icon>fingerprint</md-icon>
+        <span>Login</span>
+      </button>
+        <button md-menu-item disabled>
+        <md-icon>announcement</md-icon>
+        <span>Issues</span>
+      </button>
+        <button md-menu-item>
+        <md-icon>notifications_off</md-icon>
+        <span>Disable alerts</span>
+      </button>
+    </md-menu>
+</md-toolbar>
+
+<md-radio-group>
+    <md-radio-button value="1">Option 1</md-radio-button>
+    <md-radio-button value="2">Option 2</md-radio-button>
+</md-radio-group>
+
+<md-slider></md-slider>
+
+<md-card>
+    <md-card-content>
+        <h2 class="example-h2">Checkbox configuration</h2>
+
+        <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="checked">Checked</md-checkbox>
+            <md-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</md-checkbox>
+        </section>
+
+        <section class="example-section">
+            <label class="example-margin">Align:</label>
+            <md-radio-group [(ngModel)]="align">
+                <md-radio-button class="example-margin" value="start">Start</md-radio-button>
+                <md-radio-button class="example-margin" value="end">End</md-radio-button>
+            </md-radio-group>
+        </section>
+
+        <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</md-checkbox>
+        </section>
+    </md-card-content>
+</md-card>
+
+<md-card class="result">
+    <md-card-content>
+        <h2 class="example-h2">Result</h2>
+
+        <section class="example-section">
+            <md-slide-toggle class="example-margin" [color]="color" [checked]="checked" [disabled]="disabled">Slide me!</md-slide-toggle>
+            <md-checkbox class="example-margin" [(ngModel)]="checked" [(indeterminate)]="indeterminate" [align]="align" [disabled]="disabled">
+                I'm a checkbox
+            </md-checkbox>
+        </section>
+    </md-card-content>
+</md-card>
+
+
+
+
+
+<form>
+    <div class="mdl-textfield mdl-js-textfield">
+        <input type="text" name="name" [(ngModel)]="name" class="mdl-textfield__input" id="name" />
+        <label for="name" class="mdl-textfield__label">Name:</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <input type="text" name="email" [(ngModel)]="email" class="mdl-textfield__input" id="email" />
+        <label class="mdl-textfield__label" for="email">Email:</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <input type="text" name="address.street" [(ngModel)]="address.street" class="mdl-textfield__input" id="state" />
+        <label class="mdl-textfield__label">Street:</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <input type="text" name="address.city" [(ngModel)]="address.city" class="mdl-textfield__input" id="city" />
+        <label class="mdl-textfield__label" for="city">City:</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <input type="text" name="address.state" [(ngModel)]="address.state" class="mdl-textfield__input" id="state" />
+        <label for="state" class="mdl-textfield__label">State:</label>
+    </div>
+</form>
+
+
+
+<md-tab-group>
+    <md-tab label="tab 1">Content 1</md-tab>
+    <md-tab label="tab 2">Content 2</md-tab>
+</md-tab-group>
+
+<div class="mdl-grid">
+    <div *ngFor="let photo of photos" class="mdl-cell mdl-cell--3-col">
+        <img src='{{photo.url}}' alt="{{photo.title}}" />
+    </div>
+</div>
